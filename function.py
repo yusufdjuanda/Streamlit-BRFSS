@@ -269,7 +269,10 @@ def smoking_page(df_smokers, loc_df):
                 year1 = st.selectbox("Year", df_smokers["Year"].unique())
             
             fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, title=f"Frequency distribution of smokers in the USA across the {group_cat} in {year1}")
-            st.plotly_chart(fig)
+            if group_cat == "Overall":
+                st.plotly_chart(fig.update_layout(width=300))
+            else:
+                st.plotly_chart(fig)
 
         # Adding the expander to see the raw number 
         raw_data = st.expander("See the raw number")
