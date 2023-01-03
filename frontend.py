@@ -6,7 +6,7 @@ import plotly.express as px
 from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="BRFSS", page_icon="📑")
 
 @st.cache()
 def get_display_df():
@@ -35,9 +35,8 @@ def get_loc_df():
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
-    
 
-
+   
 
 display_df = get_display_df()
 transformed_df = get_df()

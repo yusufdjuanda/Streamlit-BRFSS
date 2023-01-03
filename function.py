@@ -221,6 +221,7 @@ def smoking_page(df_smokers, loc_df):
     # ----------------------Data viz for group category---------------------- #
 
     with tab1:
+        st.subheader("Smokers Distribution Based on The Group Category")
 
         st.write("""
         The relative frequency is represented by the percentage which is based on the sum of each group category of respondents in the year of BRFSS Survey. \n
@@ -288,7 +289,7 @@ def smoking_page(df_smokers, loc_df):
     with tab2:
 
         st.subheader("Smokers Distribution Based on The Location")
-        st.write("Frequency distribution of smokers across the USA states ranked by the highest smokers prevalence.")
+        st.write("Frequency distribution of smokers across the USA states ranked by the highest or the lowest smokers prevalence.")
         st.write("\n\n\n")
 
 
