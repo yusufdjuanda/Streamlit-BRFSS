@@ -38,8 +38,8 @@ def load_lottiefile(filepath: str):
 
 @st.cache()
 def icon(lottie_json, height = 300, width = 300):
-    icon = st_lottie(lottie_json, height, width)
-    return icon
+     return st_lottie(lottie_json, height, width)
+    
 
 
 display_df = get_display_df()
