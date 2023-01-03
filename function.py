@@ -87,6 +87,9 @@ def brfss_page(display_df, transformed_df, loc_df, lottie_json):
                 8. **Sample_Size**: Number of respondents
             """
             )
+        
+        st.markdown("---")
+        
 
     with tab2:
         st.subheader("Transformed Dataset")
