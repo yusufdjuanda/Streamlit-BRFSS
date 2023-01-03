@@ -6,7 +6,7 @@ import plotly.express as px
 from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
 
-st.set_page_config(layout="wide", page_title=BRFSS, page_icon="📑",)
+st.set_page_config(layout="wide", page_title="BRFSS", page_icon="📑")
 
 @st.cache()
 def get_display_df():
