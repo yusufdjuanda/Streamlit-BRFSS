@@ -35,8 +35,11 @@ def get_loc_df():
 def load_lottiefile(filepath: str):
     with open(filepath, "r") as f:
         return json.load(f)
-    
 
+@st.cache()
+def icon(lottie_json, height = 300, width = 300):
+    icon = st_lottie(lottie_json, height, width)
+    return icon
 
 
 display_df = get_display_df()
@@ -61,16 +64,16 @@ with st.sidebar:
 if selected == 'About the Project':
     filepath = "employee-getting-customer-requirements.json"
     lottie_json = load_lottiefile(filepath)
-    st_lottie(lottie_json,height = 300, width = 300)
+    icon(lottie_json,height = 300, width = 300)
     main_page()
 if selected == 'BRFSS':
     st.image("BRFSS.png", width=250)
     filepath = "form.json"
-    lottie_json = load_lottiefile(filepath)
+    icon = load_lottiefile(filepath)
     brfss_page(display_df, transformed_df, loc_df, lottie_json)
 if selected == 'Smoking Status':
     filepath = "smoking.json"
     lottie_json = load_lottiefile(filepath)
-    st_lottie(lottie_json,height = 100, width = 100)
+    icon(lottie_json,height = 100, width = 100)
     smoking_page(transformed_df, loc_df)
 
