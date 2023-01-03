@@ -235,16 +235,15 @@ def smoking_page(df_smokers, loc_df):
             group_cat = st.selectbox(
                 "Group category",
                 [
+                    "Overall",
                     "Age Group",
                     "Education Attained",
                     "Race/Ethnicity",
                     "Gender",
-                    "Household Income",
-                    "Overall",
+                    "Household Income"
                 ],
             )
-        with col6:
-            year1 = st.selectbox("Year", df_smokers["Year"].unique())
+       
 
         radio = st.radio('Select the graph', ['Line graph','Bar graph'], horizontal = True) # selection fro type of graph
 
@@ -267,9 +266,10 @@ def smoking_page(df_smokers, loc_df):
 
             st.plotly_chart(fig, use_container_width=True)
         else:
-            
-                fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, title=f"Frequency distribution of smokers in the USA across the {group_cat} in {year1}")
-                st.plotly_chart(fig)
+            with col6:
+                year1 = st.selectbox("Year", df_smokers["Year"].unique())
+            fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, title=f"Frequency distribution of smokers in the USA across the {group_cat} in {year1}")
+            st.plotly_chart(fig)
 
         # Adding the expander to see the raw number 
         raw_data = st.expander("See the raw number")
