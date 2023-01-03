@@ -87,9 +87,6 @@ def brfss_page(display_df, transformed_df, loc_df, lottie_json):
                 8. **Sample_Size**: Number of respondents
             """
             )
-        
-        st.markdown("---")
-        
 
     with tab2:
         st.subheader("Transformed Dataset")
@@ -235,17 +232,16 @@ def smoking_page(df_smokers, loc_df):
             group_cat = st.selectbox(
                 "Group category",
                 [
-                    "Overall",
                     "Age Group",
                     "Education Attained",
                     "Race/Ethnicity",
                     "Gender",
-                    "Household Income"
+                    "Household Income",
+                    "Overall",
                 ],
             )
-       
 
-        radio = st.radio('Select the graph', ['Line graph','Bar graph'], horizontal = True) # selection fro type of graph
+        radio = st.radio('Select the graph', ['Line graph','Bar graph'], horizontal = True) # selection for type of graph
 
         df_smokers = df_smokers[df_smokers['Topic'] == 'Smoker Status']
         # Specifying df_smokers according to the group category
@@ -268,6 +264,7 @@ def smoking_page(df_smokers, loc_df):
         else:
             with col6:
                 year1 = st.selectbox("Year", df_smokers["Year"].unique())
+            
             fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, title=f"Frequency distribution of smokers in the USA across the {group_cat} in {year1}")
             st.plotly_chart(fig)
 
@@ -291,15 +288,6 @@ def smoking_page(df_smokers, loc_df):
         st.subheader("Smokers Distribution Based on The Location")
         st.write("Frequency distribution of smokers across the USA states ranked by the highest smokers prevalence.")
         st.write("\n\n\n")
-
-
-        # token = "pk.eyJ1IjoieXVzdWYtZGp1YW5kYSIsImEiOiJjbGM1eWo1djAwdGpwM29sOHRjMzJxNXBjIn0.a74Lmpnj7Tkk41lUhF44fA"
-        # fig = px.scatter_mapbox(df_loc, lat="latitude", lon="longitude", 
-        # hover_name= "Locationdesc", color="Percentage_Loc", size = 'Total_SS_Loc',
-        # color_continuous_scale=px.colors.cyclical.IceFire, size_max=200,opacity = 0.3, zoom=4, width = 700, height = 500,
-        # ).update_layout(mapbox_accesstoken=token)
-
-        # st.plotly_chart(fig, use_container_width= False)
 
 
         col1, col2, col3 = st.columns(3)
@@ -390,7 +378,6 @@ def smoking_page(df_smokers, loc_df):
                 st.write("Chi-square statistic: {:.3f}".format(stat))
                 st.write("p-value: {:.3f}".format(p))
                 st.write("Degrees of freedom: {:.0f}".format(dof))
-                # st.table(pd.DataFrame(expected))
     return smoking_page
 
 
