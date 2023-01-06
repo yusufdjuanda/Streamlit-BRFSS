@@ -2,11 +2,12 @@
 import pandas as pd
 import streamlit as st
 from function import *
-import plotly.express as px
 from streamlit_option_menu import option_menu
 from streamlit_lottie import st_lottie
 
 st.set_page_config(layout="wide", page_title="BRFSS", page_icon="📑")
+import json
+st.set_page_config(layout="wide")
 
 @st.cache()
 def get_display_df():
@@ -22,6 +23,8 @@ def get_display_df():
 def get_df():
     df = pd.read_csv("BRFSS.csv", sep=",")
     df['Category'] = df['Category'].str.replace(", non-Hispanic","")
+    df['Year'] = df['Year'].astype('str')
+    df['Response'] = df['Response'].str.replace("bmi","BMI")
     return df
 
 # Creating a function to load the location dataset
