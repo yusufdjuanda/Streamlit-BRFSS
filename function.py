@@ -235,7 +235,7 @@ def smoking_page(df_smokers, loc_df):
             group_cat = st.selectbox(
                 "Group category",
                 [
-                    "Overall",
+                    
                     "Overall",
                     "Age Group",
                     "Education Attained",
