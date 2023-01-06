@@ -272,7 +272,7 @@ def smoking_page(df_smokers, loc_df):
                 fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, width = 200, hover_data=['Percentage', 'Sample_Size', 'Total_SS', 'Year'])
                 st.plotly_chart(fig)
             else:
-                fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, width = 200, hover_data=['Percentage', 'Sample_Size', 'Total_SS', 'Year'], title = f'Frequency distribution of smokers in the USA across the {group_cat} in {year1}')
+                fig = px.bar(data_plotly[data_plotly['Year'] == year1], x="Category", y="Percentage", template = "seaborn", text_auto= True, hover_data=['Percentage', 'Sample_Size', 'Total_SS', 'Year'], title = f'Frequency distribution of smokers in the USA across the {group_cat} in {year1}')
                 st.plotly_chart(fig)
             
     
