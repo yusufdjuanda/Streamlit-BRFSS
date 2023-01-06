@@ -236,7 +236,6 @@ def smoking_page(df_smokers, loc_df):
                 "Group category",
                 [
                     "Overall",
-                    "Overall",
                     "Age Group",
                     "Education Attained",
                     "Race/Ethnicity",
