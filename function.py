@@ -170,9 +170,9 @@ def brfss_page(display_df, transformed_df, loc_df, lottie_json):
             df_response = transformed_df.loc[(transformed_df['Class_Category'] == "Overall") & (transformed_df['Question'] == question)].groupby(['Year','Response','Sample_Size', 'Total_SS'])['Percentage'].sum().reset_index()
             fig = px.line(
                 df_response, x="Year", y="Percentage", color="Response", template="seaborn", width=700, height=400,
-                title=f"{question}",
                 hover_data=['Percentage', 'Sample_Size', 'Total_SS', 'Year'],
             )
+            st.write(f"**{question}**")
             st.plotly_chart(fig, use_container_width=True)
 
         with st.expander("See group category"):
@@ -235,7 +235,6 @@ def smoking_page(df_smokers, loc_df):
             group_cat = st.selectbox(
                 "Group category",
                 [
-                    
                     "Overall",
                     "Age Group",
                     "Education Attained",
